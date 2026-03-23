@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --font-bebas: 'Bebas Neue', sans-serif;
+  --background:     #F5F0E8;
+  --surface:        #EDE8DC;
+  --surface-border: #D9D3C4;
+  --text-primary:   #1A1A1A;
+  --text-secondary: #5A5750;
+  --accent:         #6B6B4A;
+  --accent-warm:    #C4963A;
+  --cta-bg:         #F0EAD8;
+  --font-display:   "Times New Roman", Times, serif;
+  --font-ui:        Helvetica, Arial, sans-serif;
 }
 
 html {
@@ -12,9 +20,9 @@ html {
 }
 
 body {
-  background-color: #0A0A0A;
-  color: #F5F5F0;
-  font-family: var(--font-inter);
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,48 +32,23 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #EDE8DC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
+  background: #D9D3C4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E8FF00;
+  background: #6B6B4A;
 }
 
-/* Grain texture overlay */
-.grain::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px;
-}
-
-/* Section fade-in animation on scroll */
-.animate-on-scroll {
+/* Scroll-triggered fade-up */
+.fade-up {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-.animate-on-scroll.visible {
+.fade-up.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Accent glow utility */
-.accent-glow {
-  box-shadow: 0 0 24px rgba(232, 255, 0, 0.15);
-}
-
-/* Service card hover glow */
-.service-card:hover {
-  border-color: #E8FF00;
-  box-shadow: 0 0 32px rgba(232, 255, 0, 0.1), inset 0 0 32px rgba(232, 255, 0, 0.03);
 }

@@ -1,140 +1,89 @@
-import SectionHeading from '@/components/ui/SectionHeading'
-
-const PORTFOLIO_ITEMS = [
+const PORTFOLIO = [
   {
     id: 1,
-    title: 'Shopify Store Redesign',
-    type: 'Web & E-Commerce',
-    client: 'Local Apparel Brand',
-    accent: '#E8FF00',
-    bg: 'from-[#1a1a0e] to-[#0f0f07]',
-    tall: true,
+    name: 'MOOV',
+    tags: ['Shopify', 'Branding'],
+    description: "Dark-themed e-commerce store for a smart alarm product.",
+    gradient: 'linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 45%, #22203C 100%)',
   },
   {
     id: 2,
-    title: 'Brand Identity Package',
-    type: 'Graphic Design',
-    client: 'City Bar & Kitchen',
-    accent: '#FF6B35',
-    bg: 'from-[#1a0f0a] to-[#0f0a07]',
-    tall: false,
+    name: 'Rob Roy',
+    tags: ['Branding', 'Web'],
+    description: "Identity and digital presence for a St. John\u2019s venue.",
+    gradient: 'linear-gradient(135deg, #3A1E0A 0%, #6B3A1A 45%, #8B4C22 100%)',
   },
   {
     id: 3,
-    title: 'Product Photography',
-    type: 'Photography',
-    client: 'Craft Brewery',
-    accent: '#A8EDEA',
-    bg: 'from-[#0a141a] to-[#070f14]',
-    tall: false,
-  },
-  {
-    id: 4,
-    title: 'Promo Film',
-    type: 'Filmmaking',
-    client: 'Nightclub Venue',
-    accent: '#C77DFF',
-    bg: 'from-[#110a1a] to-[#0a0710]',
-    tall: true,
-  },
-  {
-    id: 5,
-    title: 'Merch Design & Fulfilment',
-    type: 'Design & Print',
-    client: 'Music Festival',
-    accent: '#06D6A0',
-    bg: 'from-[#0a1a12] to-[#07100c]',
-    tall: false,
-  },
-  {
-    id: 6,
-    title: 'Restaurant Landing Page',
-    type: 'Web',
-    client: 'Local Eatery',
-    accent: '#FFB703',
-    bg: 'from-[#1a1508] to-[#0f0e06]',
-    tall: false,
+    name: 'Konfusion',
+    tags: ['Branding', 'Web'],
+    description: "Visual identity and web for St. John\u2019s nightlife.",
+    gradient: 'linear-gradient(135deg, #18082A 0%, #2E1048 45%, #3C1860 100%)',
   },
 ]
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 bg-bg-secondary border-t border-border">
+    <section id="portfolio" className="py-20 lg:py-24 bg-parchment">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
-          <SectionHeading
-            eyebrow="Our Work"
-            heading="PROJECTS WE'RE PROUD OF"
-          />
-          <a
-            href="#contact"
-            className="self-start sm:self-auto text-sm text-text-secondary hover:text-accent transition-colors border-b border-current pb-0.5"
+        {/* Section header */}
+        <div className="mb-12">
+          <h2
+            className="font-display text-4xl lg:text-5xl text-ink"
+            style={{ fontWeight: 400 }}
           >
-            Start your project →
-          </a>
+            Selected work
+          </h2>
         </div>
 
-        {/* Masonry-style grid — mirrors the layered card layout in the reference */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[220px]">
-          {PORTFOLIO_ITEMS.map((item) => (
+        {/* 3-column 16:9 cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {PORTFOLIO.map((project) => (
             <div
-              key={item.id}
-              className={`
-                relative group overflow-hidden rounded-sm border border-border cursor-pointer
-                bg-gradient-to-br ${item.bg}
-                ${item.tall ? 'sm:row-span-2' : 'row-span-1'}
-                hover:border-opacity-60 transition-all duration-300
-              `}
-              style={{ borderColor: `${item.accent}20` }}
+              key={project.id}
+              className="bg-surface border border-surface-border overflow-hidden hover:shadow-lg transition-shadow duration-300 group cursor-pointer"
+              style={{ borderRadius: '12px' }}
             >
-              {/* Decorative gradient blob */}
+              {/* Photo area — 16:9 */}
               <div
-                className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(ellipse 80% 80% at 50% 50%, ${item.accent}30 0%, transparent 70%)`,
-                }}
-                aria-hidden
-              />
-
-              {/* Grid lines */}
-              <div
-                className="absolute inset-0 opacity-[0.04]"
-                style={{
-                  backgroundImage: `linear-gradient(${item.accent} 1px, transparent 1px), linear-gradient(90deg, ${item.accent} 1px, transparent 1px)`,
-                  backgroundSize: '40px 40px',
-                }}
-                aria-hidden
-              />
-
-              {/* Content overlay — shows on hover like in reference */}
-              <div className="absolute inset-0 flex flex-col justify-between p-5">
-                {/* Top badge */}
-                <div className="flex items-start justify-between">
+                className="w-full relative overflow-hidden"
+                style={{ aspectRatio: '16/9', background: project.gradient }}
+              >
+                {/* Hover overlay with "View project" pill */}
+                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/25 transition-all duration-300 flex items-center justify-center">
                   <span
-                    className="text-xs px-3 py-1 rounded-sm border backdrop-blur-sm"
-                    style={{ borderColor: `${item.accent}40`, color: item.accent, backgroundColor: `${item.accent}10` }}
+                    className="text-white text-xs font-ui opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/50 px-5 py-2"
+                    style={{ borderRadius: '999px', letterSpacing: '0.04em' }}
                   >
-                    {item.type}
+                    View project
                   </span>
                 </div>
+              </div>
 
-                {/* Bottom info */}
-                <div>
-                  <p className="text-xs text-text-muted mb-1">{item.client}</p>
-                  <h3 className="font-display text-xl lg:text-2xl tracking-wider text-text-primary">
-                    {item.title}
-                  </h3>
-
-                  {/* CTA — hidden, appears on hover like "Veiw tour" in reference */}
-                  <div className="mt-3 h-0 overflow-hidden group-hover:h-10 transition-all duration-300">
+              {/* Card body */}
+              <div className="p-5">
+                {/* Service tag pills */}
+                <div className="flex items-center gap-2 mb-3">
+                  {project.tags.map((tag) => (
                     <span
-                      className="block text-center text-xs font-medium py-2.5 rounded-sm transition-colors"
-                      style={{ backgroundColor: `${item.accent}20`, color: item.accent }}
+                      key={tag}
+                      className="text-[10px] font-ui text-muted border border-surface-border px-3 py-1"
+                      style={{ borderRadius: '999px', letterSpacing: '0.04em' }}
                     >
-                      View project →
+                      {tag}
                     </span>
-                  </div>
+                  ))}
                 </div>
+
+                {/* Project name — Times New Roman */}
+                <h3
+                  className="font-display text-2xl text-ink mb-1 leading-tight"
+                  style={{ fontWeight: 400 }}
+                >
+                  {project.name}
+                </h3>
+
+                <p className="text-sm text-muted font-ui">{project.description}</p>
               </div>
             </div>
           ))}

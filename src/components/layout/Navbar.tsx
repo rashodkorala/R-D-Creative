@@ -2,8 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import { NAV_LINKS } from '@/lib/constants'
 import clsx from 'clsx'
+
+const NAV_LINKS = [
+  { label: 'Services', href: '#services' },
+  { label: 'Work', href: '#portfolio' },
+  { label: 'Contact', href: '#contact' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -20,67 +25,55 @@ export default function Navbar() {
       className={clsx(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-bg-primary/95 backdrop-blur-sm border-b border-border'
+          ? 'bg-parchment/95 backdrop-blur-sm border-b border-surface-border'
           : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="font-display text-2xl tracking-wider text-text-primary hover:text-accent transition-colors">
-          R-D <span className="text-accent">CREATIVE</span>
+        {/* Wordmark — Times New Roman */}
+        <a
+          href="#"
+          className="font-display text-xl text-ink hover:text-olive transition-colors"
+        >
+          R&amp;D Creative Agency
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop nav — Helvetica */}
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-text-secondary hover:text-text-primary tracking-wide transition-colors"
+              className="text-sm text-muted hover:text-ink transition-colors"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="hidden md:inline-flex items-center gap-2 bg-accent text-bg-primary text-sm font-semibold px-5 py-2.5 rounded-sm hover:bg-accent/90 transition-colors"
-        >
-          Get a Quote
-        </a>
-
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-text-primary"
+          className="md:hidden text-ink"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile overlay */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-bg-primary z-40 flex flex-col items-center justify-center gap-8">
+        <div className="md:hidden fixed inset-0 top-16 bg-parchment z-40 flex flex-col items-center justify-center gap-10">
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-display text-4xl tracking-wider text-text-primary hover:text-accent transition-colors"
+              className="font-display text-4xl text-ink hover:text-olive transition-colors"
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-4 bg-accent text-bg-primary font-semibold px-8 py-3 rounded-sm hover:bg-accent/90 transition-colors"
-          >
-            Get a Quote
-          </a>
         </div>
       )}
     </header>
