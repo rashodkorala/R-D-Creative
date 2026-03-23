@@ -46,7 +46,7 @@ const SERVICES = [
 export default function Services() {
   return (
     <section id="services" className="py-20 lg:py-24 bg-parchment">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12">
           <h2 className="font-display text-4xl lg:text-5xl text-ink" style={{ fontWeight: 400 }}>

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-parchment border-t border-surface-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           {/* Wordmark */}
           <p className="font-display text-2xl text-ink" style={{ fontWeight: 400 }}>
@@ -9,7 +9,7 @@ export default function Footer() {
           </p>
 
           {/* Links */}
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <a
               href="#services"
               className="text-sm text-muted hover:text-ink font-ui transition-colors"

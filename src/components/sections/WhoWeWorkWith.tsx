@@ -10,16 +10,16 @@ const CLIENT_TYPES = [
 export default function WhoWeWorkWith() {
   return (
     <section id="clients" className="py-20 lg:py-24 bg-surface">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
           {/* Left — copy */}
           <div>
             <h2
-              className="font-display text-4xl lg:text-5xl text-ink leading-tight mb-8"
+              className="font-display text-4xl lg:text-5xl text-ink leading-tight mb-6 lg:mb-8"
               style={{ fontWeight: 400 }}
             >
-              Built for venues<br />and brands
+              Built for venues and brands
             </h2>
             <p className="text-base text-muted font-ui leading-relaxed max-w-md">
               We work with St.&nbsp;John&rsquo;s venues, hospitality businesses, and local

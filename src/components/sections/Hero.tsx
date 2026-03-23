@@ -30,7 +30,7 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Subtle texture overlay */}
+      {/* Subtle film-grain texture */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -41,22 +41,22 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Hero content — bottom anchored */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pb-36 pt-32 w-full">
+      {/* Hero content — bottom-anchored, padded to clear filter bar */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-52 sm:pb-44 lg:pb-32">
         <h1
-          className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] text-white leading-tight max-w-3xl"
+          className="font-display text-4xl sm:text-5xl lg:text-7xl xl:text-[5.5rem] text-white leading-tight max-w-3xl"
           style={{ fontWeight: 400 }}
         >
-          Creative built for St.&nbsp;John's.
+          Creative built for St.&nbsp;John&rsquo;s.
         </h1>
-        <p className="mt-6 text-base sm:text-lg text-white/75 font-ui max-w-md leading-relaxed">
-          Websites, design, film, and merch
-          <br />
-          for venues and local brands.
+
+        <p className="mt-5 sm:mt-6 text-base sm:text-lg text-white/75 font-ui max-w-xs sm:max-w-sm lg:max-w-md leading-relaxed">
+          Websites, design, film, and merch for venues and local brands.
         </p>
+
         <a
           href="#contact"
-          className="mt-10 inline-flex items-center gap-2 bg-cta text-ink text-sm font-ui px-8 py-4 hover:bg-amber hover:text-white transition-all duration-200"
+          className="mt-8 sm:mt-10 inline-flex items-center bg-cta text-ink text-sm font-ui px-7 sm:px-8 py-3.5 sm:py-4 hover:bg-amber hover:text-white transition-all duration-200"
           style={{ borderRadius: '8px' }}
         >
           Work with us
@@ -64,14 +64,15 @@ export default function Hero() {
       </div>
 
       {/* Bottom filter bar — parchment, Helvetica uppercase */}
-      <div className="absolute bottom-0 left-0 right-0 bg-parchment/96 backdrop-blur-sm border-t border-surface-border z-10">
-        {/* Desktop */}
+      <div className="absolute bottom-0 left-0 right-0 bg-parchment border-t border-surface-border z-10">
+
+        {/* Desktop: horizontal row */}
         <div className="hidden lg:flex items-stretch max-w-7xl mx-auto px-6 lg:px-8 h-14">
           {FILTER_ITEMS.map((item) => (
             <a
               key={item}
               href="#services"
-              className="flex items-center px-7 text-[11px] font-ui text-muted hover:text-ink transition-colors border-r border-surface-border uppercase whitespace-nowrap flex-shrink-0"
+              className="flex items-center px-6 text-[11px] font-ui text-muted hover:text-ink transition-colors border-r border-surface-border uppercase whitespace-nowrap flex-shrink-0"
               style={{ letterSpacing: '0.08em' }}
             >
               {item}
@@ -79,26 +80,26 @@ export default function Hero() {
           ))}
           <a
             href="#contact"
-            className="flex items-center px-7 text-[11px] font-ui text-amber hover:text-ink transition-colors uppercase whitespace-nowrap ml-auto"
+            className="flex items-center px-6 text-[11px] font-ui text-amber hover:text-ink transition-colors uppercase whitespace-nowrap ml-auto"
             style={{ letterSpacing: '0.08em' }}
           >
             Get in touch →
           </a>
         </div>
 
-        {/* Mobile 2×2 grid + full-width CTA */}
+        {/* Mobile: 2×2 grid + full-width CTA */}
         <div className="lg:hidden">
-          <div className="grid grid-cols-2 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2">
             {FILTER_ITEMS.map((item, i) => (
               <a
                 key={item}
                 href="#services"
                 className={[
-                  'flex items-center justify-center py-4 text-[10px] font-ui text-muted hover:text-ink transition-colors uppercase text-center',
+                  'flex items-center justify-center py-4 px-3 text-[10px] font-ui text-muted hover:text-ink transition-colors uppercase text-center leading-tight',
                   i % 2 === 0 ? 'border-r border-surface-border' : '',
                   i < 2 ? 'border-b border-surface-border' : '',
                 ].join(' ')}
-                style={{ letterSpacing: '0.08em' }}
+                style={{ letterSpacing: '0.07em' }}
               >
                 {item}
               </a>
@@ -106,12 +107,13 @@ export default function Hero() {
           </div>
           <a
             href="#contact"
-            className="flex items-center justify-center py-3 text-[10px] font-ui text-amber hover:text-ink transition-colors uppercase border-t border-surface-border"
+            className="flex items-center justify-center py-3.5 text-[10px] font-ui text-amber hover:text-ink transition-colors uppercase border-t border-surface-border"
             style={{ letterSpacing: '0.08em' }}
           >
             Get in touch →
           </a>
         </div>
+
       </div>
     </section>
   )

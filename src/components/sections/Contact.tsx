@@ -4,10 +4,10 @@ export default function Contact() {
       id="contact"
       className="py-20 lg:py-28 bg-surface border-t border-surface-border"
     >
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Headline — Times New Roman */}
         <h2
-          className="font-display text-5xl sm:text-6xl lg:text-7xl text-ink mb-6 leading-tight"
+          className="font-display text-4xl sm:text-5xl lg:text-7xl text-ink mb-6 leading-tight"
           style={{ fontWeight: 400 }}
         >
           Let&rsquo;s build something.
