@@ -1,31 +1,27 @@
+import Link from 'next/link'
+
 export default function Footer() {
   return (
     <footer className="bg-parchment border-t border-surface-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           {/* Wordmark */}
-          <p className="font-display text-2xl text-ink" style={{ fontWeight: 400 }}>
+          <Link href="/" className="font-display text-2xl text-ink hover:text-olive transition-colors" style={{ fontWeight: 400 }}>
             R&amp;D Creative Agency
-          </p>
+          </Link>
 
           {/* Links */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <a
-              href="#services"
-              className="text-sm text-muted hover:text-ink font-ui transition-colors"
-            >
+            <Link href="/#services" className="text-sm text-muted hover:text-ink font-ui transition-colors">
               Services
-            </a>
-            <a
-              href="#portfolio"
-              className="text-sm text-muted hover:text-ink font-ui transition-colors"
-            >
+            </Link>
+            <Link href="/#portfolio" className="text-sm text-muted hover:text-ink font-ui transition-colors">
               Work
-            </a>
-            <a
-              href="mailto:hello@rdcreative.ca"
-              className="text-sm text-muted hover:text-ink font-ui transition-colors"
-            >
+            </Link>
+            <Link href="/about" className="text-sm text-muted hover:text-ink font-ui transition-colors">
+              About
+            </Link>
+            <a href="mailto:hello@rdcreative.ca" className="text-sm text-muted hover:text-ink font-ui transition-colors">
               hello@rdcreative.ca
             </a>
           </div>

@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
 import clsx from 'clsx'
 
 const NAV_LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Work', href: '/#portfolio' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export default function Navbar() {
@@ -45,20 +47,20 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Wordmark — Times New Roman */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className={clsx(
               'font-display text-lg sm:text-xl transition-colors',
               atTop ? 'text-white' : 'text-ink hover:text-olive'
             )}
           >
             R&amp;D Creative Agency
-          </a>
+          </Link>
 
           {/* Desktop nav — Helvetica */}
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className={clsx(
@@ -69,7 +71,7 @@ export default function Navbar() {
                 )}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -104,25 +106,25 @@ export default function Navbar() {
       >
         <nav className="flex flex-col items-center gap-6 w-full px-8">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className="font-display text-[2.5rem] leading-tight text-ink hover:text-olive transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           onClick={() => setMenuOpen(false)}
           className="mt-10 bg-ink text-white text-sm font-ui px-10 py-4 hover:bg-muted transition-colors"
           style={{ borderRadius: '8px' }}
         >
           Get in touch
-        </a>
+        </Link>
       </div>
     </>
   )
