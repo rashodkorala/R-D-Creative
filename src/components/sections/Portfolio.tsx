@@ -1,47 +1,36 @@
-const PORTFOLIO = [
-  {
-    id: 1,
-    name: 'MOOV',
-    tags: ['Shopify', 'Branding'],
-    description: "Dark-themed e-commerce store for a smart alarm product.",
-    gradient: 'linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 45%, #22203C 100%)',
-  },
-  {
-    id: 2,
-    name: 'Rob Roy',
-    tags: ['Branding', 'Web'],
-    description: "Identity and digital presence for a St. John\u2019s venue.",
-    gradient: 'linear-gradient(135deg, #3A1E0A 0%, #6B3A1A 45%, #8B4C22 100%)',
-  },
-  {
-    id: 3,
-    name: 'Konfusion',
-    tags: ['Branding', 'Web'],
-    description: "Visual identity and web for St. John\u2019s nightlife.",
-    gradient: 'linear-gradient(135deg, #18082A 0%, #2E1048 45%, #3C1860 100%)',
-  },
-]
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { PROJECTS } from '@/lib/projects'
 
 export default function Portfolio() {
   return (
     <section id="portfolio" className="py-20 lg:py-24 bg-parchment">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section header */}
-        <div className="mb-12">
+        <div className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <h2
             className="font-display text-4xl lg:text-5xl text-ink"
             style={{ fontWeight: 400 }}
           >
             Selected work
           </h2>
+          <Link
+            href="/work/moov"
+            className="text-sm font-ui text-muted hover:text-ink transition-colors flex items-center gap-1.5 self-start sm:self-auto"
+          >
+            View all
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
         {/* 3-column 16:9 cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {PORTFOLIO.map((project) => (
-            <div
-              key={project.id}
-              className="bg-surface border border-surface-border overflow-hidden hover:shadow-lg transition-shadow duration-300 group cursor-pointer"
+          {PROJECTS.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/work/${project.slug}`}
+              className="bg-surface border border-surface-border overflow-hidden hover:shadow-lg transition-all duration-300 group cursor-pointer block"
               style={{ borderRadius: '12px' }}
             >
               {/* Photo area — 16:9 */}
@@ -49,20 +38,20 @@ export default function Portfolio() {
                 className="w-full relative overflow-hidden"
                 style={{ aspectRatio: '16/9', background: project.gradient }}
               >
-                {/* Hover overlay with "View project" pill */}
-                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/25 transition-all duration-300 flex items-center justify-center">
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-all duration-300 flex items-center justify-center">
                   <span
-                    className="text-white text-xs font-ui opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/50 px-5 py-2"
+                    className="text-white text-xs font-ui opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/50 px-5 py-2 flex items-center gap-2"
                     style={{ borderRadius: '999px', letterSpacing: '0.04em' }}
                   >
                     View project
+                    <ArrowRight size={11} />
                   </span>
                 </div>
               </div>
 
               {/* Card body */}
               <div className="p-5">
-                {/* Service tag pills */}
                 <div className="flex items-center gap-2 mb-3">
                   {project.tags.map((tag) => (
                     <span
@@ -73,11 +62,16 @@ export default function Portfolio() {
                       {tag}
                     </span>
                   ))}
+                  <span
+                    className="text-[10px] font-ui text-muted/60 ml-auto"
+                    style={{ letterSpacing: '0.04em' }}
+                  >
+                    {project.year}
+                  </span>
                 </div>
 
-                {/* Project name — Times New Roman */}
                 <h3
-                  className="font-display text-2xl text-ink mb-1 leading-tight"
+                  className="font-display text-2xl text-ink mb-1 leading-tight group-hover:text-olive transition-colors"
                   style={{ fontWeight: 400 }}
                 >
                   {project.name}
@@ -85,9 +79,10 @@ export default function Portfolio() {
 
                 <p className="text-sm text-muted font-ui">{project.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
       </div>
     </section>
   )

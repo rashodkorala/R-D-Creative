@@ -1,52 +1,12 @@
-const SERVICES = [
-  {
-    id: 1,
-    title: 'Shopify & E-commerce',
-    description: 'Online store builds, product pages, and full checkout flow.',
-    tag: 'WEB',
-    gradient: 'linear-gradient(135deg, #2D3A4A 0%, #3D4F6B 50%, #2A3550 100%)',
-  },
-  {
-    id: 2,
-    title: 'Websites & Landing Pages',
-    description: 'Brand sites and campaign pages for local businesses.',
-    tag: 'WEB',
-    gradient: 'linear-gradient(135deg, #243B35 0%, #3B6B5A 55%, #2D4A45 100%)',
-  },
-  {
-    id: 3,
-    title: 'Graphic Design & Branding',
-    description: 'Logos, print, and brand systems built to last.',
-    tag: 'DESIGN',
-    gradient: 'linear-gradient(135deg, #4A2D1A 0%, #8B5A2A 55%, #6B4020 100%)',
-  },
-  {
-    id: 4,
-    title: 'Merch',
-    description: 'Concept to production to on-demand sales, handled end to end.',
-    tag: 'MERCH',
-    gradient: 'linear-gradient(135deg, #3A4820 0%, #5E7030 55%, #404D28 100%)',
-  },
-  {
-    id: 5,
-    title: 'Product Photography',
-    description: 'Commercial-grade shooting for product and venue.',
-    tag: 'PHOTO',
-    gradient: 'linear-gradient(135deg, #32323E 0%, #505060 55%, #404050 100%)',
-  },
-  {
-    id: 6,
-    title: 'Film & Video',
-    description: 'Brand films and promo content for venues and campaigns.',
-    tag: 'FILM',
-    gradient: 'linear-gradient(135deg, #18181E 0%, #28283A 55%, #1E1E30 100%)',
-  },
-]
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { SERVICES_DETAIL } from '@/lib/services-data'
 
 export default function Services() {
   return (
     <section id="services" className="py-20 lg:py-24 bg-parchment">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section header */}
         <div className="mb-12">
           <h2 className="font-display text-4xl lg:text-5xl text-ink" style={{ fontWeight: 400 }}>
@@ -60,18 +20,21 @@ export default function Services() {
 
         {/* 3-column card grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service) => (
-            <div
-              key={service.id}
-              className="bg-surface border border-surface-border overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          {SERVICES_DETAIL.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="bg-surface border border-surface-border overflow-hidden hover:shadow-lg transition-all duration-300 group block"
               style={{ borderRadius: '12px' }}
             >
-              {/* Photo placeholder — 4:3 aspect ratio */}
+              {/* Colour block — 4:3 aspect ratio */}
               <div
-                className="w-full"
+                className="w-full relative overflow-hidden"
                 style={{ aspectRatio: '4/3', background: service.gradient }}
                 aria-hidden
-              />
+              >
+                <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/15 transition-all duration-300" />
+              </div>
 
               {/* Card body */}
               <div className="p-5">
@@ -83,30 +46,29 @@ export default function Services() {
                   {service.tag}
                 </span>
 
-                {/* Title — Times New Roman */}
+                {/* Title */}
                 <h3
-                  className="font-display text-xl text-ink mb-2 leading-snug"
+                  className="font-display text-xl text-ink mb-2 leading-snug group-hover:text-olive transition-colors"
                   style={{ fontWeight: 400 }}
                 >
                   {service.title}
                 </h3>
 
-                {/* Description — Helvetica */}
+                {/* Description */}
                 <p className="text-sm text-muted font-ui leading-relaxed mb-4">
                   {service.description}
                 </p>
 
                 {/* CTA */}
-                <a
-                  href="#contact"
-                  className="text-sm text-olive font-ui hover:text-ink transition-colors"
-                >
+                <span className="text-sm text-olive font-ui group-hover:text-ink transition-colors flex items-center gap-1.5">
                   Learn more
-                </a>
+                  <ArrowRight size={13} />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
       </div>
     </section>
   )
